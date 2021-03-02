@@ -55,8 +55,8 @@ std::string Shader::parse(const char* filename)
 	if (!fs.is_open())
 	{
 		std::cout << "File " << filename << " not found" << std::endl;
-		return std::string();
 		fs.close();
+		return std::string();
 	}
 	std::stringstream buffer;
 	buffer << fs.rdbuf();
