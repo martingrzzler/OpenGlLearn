@@ -151,11 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\abstractions\VertexBuffer.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\render.cpp" />
     <ClCompile Include="src\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\abstractions\VertexBuffer.h" />
     <ClInclude Include="src\render.h" />
     <ClInclude Include="src\shader.h" />
   </ItemGroup>

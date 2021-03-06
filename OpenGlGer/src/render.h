@@ -20,3 +20,4 @@ struct Vertex
 void renderOldGLTrianagle();
 std::function<void()> renderTriangle();
 std::function<void()> renderColoredTriangle();
+std::function<void()> renderSquare();

@@ -6,6 +6,7 @@
 
 #include "render.h"
 #include "shader.h"
+#include "abstractions/VertexBuffer.h"
 
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "glew32s.lib")
@@ -42,7 +43,21 @@ int main(int argc, const char** argv)
 	glfwSwapInterval(1);
 
 	// set up
-	auto drawTrinangle = renderColoredTriangle();
+	std::array<Vertex, 4> vbo =
+	{
+		Vertex{-0.5f, -0.5f, 0.0f,
+		1.0f, 0.0f, 0.0f, 1.0f},
+		Vertex{-0.5f, 0.5f, 0.0f,
+		0.0f, 1.0f, 0.0f, 1.0f},
+		Vertex{0.5f, -0.5f, 0.0f,
+		0.0f, 0.0f, 1.0f, 1.0f},
+		Vertex{0.5f, 0.5f, 0.0f,
+		1.0f, 0.0f, 0.0f, 1.0f},
+	};
+
+	VertexBuffer buffer = VertexBuffer(vbo.data(), vbo.size());
+	buffer.Bind();
+
 
 	// initialize shader
 	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
@@ -75,11 +90,11 @@ int main(int argc, const char** argv)
 
 
 		//render here
-		drawTrinangle();
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
 		glfwSwapBuffers(window);
 		
-
+	
 		glfwPollEvents();
 	}
 
